@@ -1,4 +1,6 @@
-# サンプル（プロダクト名）
+# 画像から感情を抽出し，顔文字に変換するプログラム
+
+サンプル（プロダクト名）
 
 [![IMAGE ALT TEXT HERE](https://jphacks.com/wp-content/uploads/2020/09/JPHACKS2020_ogp.jpg)](https://www.youtube.com/watch?v=G5rULR53uMk)
 
