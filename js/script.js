@@ -1,5 +1,14 @@
 const myStream = document.getElementById("myStream");
 let data = new Object();
+const faces = {
+  neutral: "(·ω·)",
+  happy: '(*^ω^*)"',
+  sad: "( ´•̥̥̥ω•̥̥̥` )",
+  angry: "(*｀へ´*)",
+  fearful: "◝(⁰▿⁰三⁰▿⁰ ‧̣̥̇)◜",
+  disgusted: "_( _︶⌓︶ )_",
+  surprised: "(((゜Д゜；)))" 
+};
 
 const onPlay = async () => {
   const message = document.getElementById('message');
@@ -32,8 +41,15 @@ const onPlay = async () => {
       expression.textContent = "判別できません。"
     } else {
       data = resultExpression.expressions;
-      expression.textContent = "以下のような表情"
-      $("#expression").append(_.template($("#template").text(), data));
+      let expressionsValue = 0;
+      let expressionText = "";
+      for (let key in data) {
+        if (data[key] > expressionsValue) {
+          expressionsValue = data[key];
+          expressionText = faces[key];
+        }
+      }
+      expression.textContent = expressionText
     }
   }, 500);
 }
