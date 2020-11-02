@@ -12,5 +12,23 @@ CF.BaseUrl.set(BASE_URL)
 
 img_url = "test1.jpg"
 faces = CF.face.detect(img_url, attributes='emotion')
+#elementlist in faces[0]
+# { faceId , faceRectangle { top , left , width , height } ,
+#   faceAttributes{ emotion{ anger , contempt , disgust , fear , happiness , neutral , sadness , surprise } }
 
-print(faces)
+
+
+#print all elements of faces data from Face api
+#print(faces) 
+
+
+#get each value of emotion data
+anger=faces[0]['faceAttributes']['emotion']['anger']
+contempt=faces[0]['faceAttributes']['emotion']['contempt']
+disgust=faces[0]['faceAttributes']['emotion']['disgust']
+fear=faces[0]['faceAttributes']['emotion']['fear']
+happiness=faces[0]['faceAttributes']['emotion']['happiness']
+neutral=faces[0]['faceAttributes']['emotion']['neutral']
+sadness=faces[0]['faceAttributes']['emotion']['sadness']
+surprise=faces[0]['faceAttributes']['emotion']['surprise']
+
