@@ -1,6 +1,6 @@
+let localStream = null;
 $(function(){
 
-    let localStream = null;
     let peer = null;
     let existingCall = null;
     let audioSelect = $('#audioSource');
@@ -71,10 +71,6 @@ $(function(){
             max: 240        
         };
 
-        if(localStream){
-            localStream = null;
-        }
-
         navigator.mediaDevices.getUserMedia(constraints)
             .then(function (stream) {
                 $('#myStream').get(0).srcObject = stream;
@@ -89,6 +85,24 @@ $(function(){
                 return;
             });
     }
+    
+
+    $("#audioTrack").on("click", function(){
+        var audioTrack = localStream.getAudioTracks()[0];
+        if($(this).prop("checked") == true){
+            audioTrack.enabled = true
+        }else{
+            audioTrack.enabled = false
+        }
+    });
+    $("#videoTrack").on("click", function(){
+        var videoTrack = localStream.getVideoTracks()[0];
+        if($(this).prop("checked") == true){
+            videoTrack.enabled = true
+        }else{
+            videoTrack.enabled = false
+        }
+    });
 
     function setupCallEventHandlers(call){
         if (existingCall) {
@@ -143,3 +157,4 @@ $(function(){
     }
 
 });
+
