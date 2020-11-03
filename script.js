@@ -1,4 +1,5 @@
 let localStream = null;
+let chatData = null;
 $(function(){
 
     let peer = null;
@@ -47,7 +48,7 @@ $(function(){
         if (!roomName) {
             return;
         }
-        const　call = peer.joinRoom(roomName, {mode: 'sfu', stream: localStream});
+        const call = peer.joinRoom(roomName, {mode: 'sfu', stream: localStream});
         setupCallEventHandlers(call);
     });
 
@@ -131,6 +132,19 @@ $(function(){
             removeAllRemoteVideos();
             setupMakeCallUI();
         });
+
+        // チャットを送信
+        $('#send').click(function(){
+            var msg = $('#msg').val();
+            call.send(msg);
+            chatLog('自分> ' + msg);
+        });
+
+        // チャットを受信
+        call.on('data', function(data){
+            chatData = data;
+            chatLog('ID: ' + data.src + '> ' + data.data); // data.src = 送信者のpeerid, data.data = 送信されたメッセージ
+        });
     }
 
     function addVideo(stream){
@@ -151,12 +165,18 @@ $(function(){
     function setupMakeCallUI(){
         $('#make-call').show();
         $('#end-call').hide();
+        $('#chat-box').hide();
     }
 
     function setupEndCallUI() {
         $('#make-call').hide();
         $('#end-call').show();
+        $('#chat-box').show();
     }
 
+    // チャットログに記録するための関数
+    function chatLog(msg){
+        $('#chatLog').append('<p>' + msg + '</p>');
+    }
 });
 
