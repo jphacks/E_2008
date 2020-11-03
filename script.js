@@ -64,11 +64,11 @@ $(function(){
         };
         constraints.video.width = {
             min: 320,
-            max: 320
+            max: 640
         };
         constraints.video.height = {
             min: 240,
-            max: 240        
+            max: 480        
         };
 
         navigator.mediaDevices.getUserMedia(constraints)
@@ -85,6 +85,7 @@ $(function(){
                 return;
             });
     }
+
     
 
     $("#audioTrack").on("click", function(){
