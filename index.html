@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head lang="ja">
+    <link rel="stylesheet" href="claps_module/style.css">//for claps
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>SkyWay Handson</title>
+    <link rel="stylesheet" href="./shared/style.css">
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script type="text/javascript" src="https://cdn.webrtc.ecl.ntt.com/skyway-latest.js"></script>
+    <script type="text/javascript" src="https://underscorejs.org/underscore-min.js"></script>
+    <script type="text/javascript" src="./shared/key.js"></script>
+    <script type="text/javascript" src="script.js"></script>
+    <script src="claps_module/howler.min.js"></script>//for claps
+    <script type="text/javascript" src="claps_module/claps.js"></script>//for claps
+</head>
+<body>
+<div class="videosContainer">
+    <video id="myStream" autoplay muted="true" onloadedmetadata="onPlay()"></video>
+</div>
+
+<div class="myControllerContainer">
+    <p>Your id: <span id="my-id">...</span></p>
+    <div class="select">
+        <label for="audioSource">Audio input source: </label><select id="audioSource"></select>
+    </div>
+    <div class="select">
+        <label for="videoSource">Video source: </label><select id="videoSource"></select>
+    </div>
+    <form id="make-call">
+        <input type="text" placeholder="Join room..." id="join-room">
+        <button type="submit">Join</button>
+    </form>
+    <div id="end-call">
+        <p>Currently in room <span id="room-id">...</span></p>
+        <button>Leave</button>
+    </div>
+    <p id="message">識別中</p>
+    <p id="expression">感情分析中</p>
+    <ul><li id="box1" class="imgbox"><img src="claps_module/clap.png" width="320" height="160" alt=""></li></ul>//for claps
+
+</div>
+
+<script type="text/javascript" src="./js/face-api.min.js"></script>
+<script type="text/javascript" src="./js/script.js"></script>
+</body>
+</html>

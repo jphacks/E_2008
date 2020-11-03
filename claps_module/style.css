@@ -1,0 +1,10 @@
+@charset "UTF-8";
+ul {
+  list-style-type: none;
+}
+.imgbox {
+  display: none;
+}
+#box1 {
+  display: none;
+}
