@@ -1,10 +1,10 @@
 let localStream = null;
 let chatData = null;
+
 $(function(){
 
     let peer = null;
     let existingCall = null;
-    let atmosphere = document.getElementById("atmosphere");
     let audioSelect = $('#audioSource');
     let videoSelect = $('#videoSource');
 
@@ -142,21 +142,45 @@ $(function(){
         });
 
         // チャットを受信
+        // 特定の文字列は、チャットでつかえない
         call.on('data', function(data){
-            chatData = data;
-            chatLog('ID: ' + data.src + '> ' + data.data);
-            // data.src = 送信者のpeerid, data.data = 送信されたメッセージ
+            if (data.data in faces) {
+                const faceDom = $('#'+data.src+"Face");
+                faceDom.attr('class', data.data);
+                faceDom.text(faces[data.data]);
+            } else if (data.data === "unknown") {
+                const faceDom = $('#'+data.src+"Face");
+                faceDom.attr('class', data.data);
+                faceDom.text("?( ? )?");
+            } else {
+                chatData = data;
+                chatLog('ID: ' + data.src + '> ' + data.data);
+                // data.src = 送信者のpeerid, data.data = 送信されたメッセージ
+            }
         });
+
+        const observer = new MutationObserver(function(){
+            /** DOMの変化が起こった時の処理 */
+            console.log(expressionKey);
+            call.send(expressionKey);
+        });
+
+        const expression = document.getElementById("expression");
+        const config = { attributes: true, childList: true, characterData: true };
+
+        observer.observe(expression, config);
     }
 
     function addVideo(stream){
         const videoDom = $('<video autoplay>');
         videoDom.attr('id',stream.peerId);
         videoDom.get(0).srcObject = stream;
+        $('.videosContainer').append(videoDom);
+        // とりあえず、入室時の自分の表情を初期値として代入
         const faceDom = $('<span>');
+        faceDom.attr('id',stream.peerId+"Face");
         faceDom.attr('class',expressionKey);
         faceDom.text(expressionText);
-        $('.videosContainer').append(videoDom)
         $('.faceAnalysis').after(faceDom);
     }
 

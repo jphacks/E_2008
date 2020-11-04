@@ -47,9 +47,9 @@ const onPlay = async () => {
     );
 
     if (result) {
-      message.textContent = "認識されてます"
+      message.textContent = "認識されてます";
     } else {
-      message.textContent = "認識されていません"
+      message.textContent = "認識されていません";
     }
   }, 500);
 
@@ -61,7 +61,8 @@ const onPlay = async () => {
     ).withFaceExpressions();
     
     if (resultExpression === undefined) {
-      expression.textContent = "判別できません。"
+      expressionKey = "unknown";
+      expression.textContent = "?( ? )?";
     } else {
       data = resultExpression.expressions;
       for (let key in data) {
@@ -71,7 +72,7 @@ const onPlay = async () => {
           expressionKey = key;
         }
       }
-      expression.textContent = expressionText
+      expression.textContent = expressionText;
     }
   }, 500);
 }
