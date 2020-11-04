@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head lang="ja">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>SkyWay Handson</title>
+    <link rel="stylesheet" href="./shared/style.css">
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script type="text/javascript" src="https://cdn.webrtc.ecl.ntt.com/skyway-latest.js"></script>
+    <script type="text/javascript" src="https://underscorejs.org/underscore-min.js"></script>
+    <script type="text/javascript" src="./shared/key.js"></script>
+    <script type="text/javascript" src="script.js"></script>
+</head>
+<body onload="init()">
+    <div class="videosContainer">
+        <video id="myStream" autoplay muted="true"></video>
+    </div>
+
+    <div class="myControllerContainer">
+        <p>Your id: <span id="my-id">...</span></p>
+        <div class="select">
+            <label for="audioSource">Audio input source: </label><select id="audioSource"></select>
+        </div>
+        <div class="select">
+            <label for="videoSource">Video source: </label><select id="videoSource"></select>
+        </div>
+        <div class="mute-controller">
+            <label><input type="checkbox" id="audioTrack" checked>マイク ON/OFF</label>
+            <label><input type="checkbox" id="videoTrack" checked>ビデオ ON/OFF</label>
+        </div>
+        <form id="make-call">
+            <input type="text" placeholder="Join room..." id="join-room">
+            <button type="submit">入室</button>
+        </form>
+        <form id="end-call">
+            <label class="room-label">Currently in room: <span id="room-id">...</span></label>
+            <button type="submit">退室</button>
+        </form>
+        <div id="chat-box">
+            <input type="text" id="msg" placeholder="チャットを入力"> <button id="send">送信</button>
+            <hr>
+            <div id="chatLog"></div>
+        </div>
+    </div>
+
+    <div class="face-api-container">
+        <video id="faceAPIStream" autoplay muted="true" onloadedmetadata="onPlay()"></video>
+        <div class="face-api-output">
+            <dl>
+                <dt>顔：</dt>
+                <dd id="message">識別中</dd>
+                <dt>表情：</dt>
+                <dd id="expression">感情分析中</dd>
+            </dl>
+            <h2 class="faceAnalysis">参加者の表情</h2>
+        </div>
+        
+    </div>
+    <script type="text/javascript" src="./js/face-api.min.js"></script>
+    <script type="text/javascript" src="./js/script.js"></script>
+</body>
+</html>
