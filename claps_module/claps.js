@@ -21,18 +21,6 @@ const bgm1 = new Howl({
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
 var Recording = function(cb){
     var recorder = null;
     var recording = true;
@@ -76,13 +64,16 @@ var Recording = function(cb){
 
   function detectClap(data){
     var t = (new Date()).getTime();
-    if(t - lastClap < 200) return false; // TWEAK HERE
+    if(t - lastClap < 100) return false; // TWEAK HERE
     var zeroCrossings = 0, highAmp = 0;
     for(var i = 1; i < data.length; i++){
       if(Math.abs(data[i]) > 0.25) highAmp++; // TWEAK HERE
       if(data[i] > 0 && data[i-1] < 0 || data[i] < 0 && data[i-1] > 0) zeroCrossings++;
     }
-    if(highAmp > 20 && zeroCrossings > 30){ // TWEAK HERE
+//if(highAmp>0){
+//    console.log(highAmp);
+//    console.log(zeroCrossings);}
+    if(130>highAmp && highAmp > 10 && zeroCrossings > 300){ // TWEAK HERE
       //console.log(highAmp+' / '+zeroCrossings);
       lastClap = t;
       return true;
