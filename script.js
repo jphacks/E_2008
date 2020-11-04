@@ -4,6 +4,7 @@ $(function(){
 
     let peer = null;
     let existingCall = null;
+    let atmosphere = document.getElementById("atmosphere");
     let audioSelect = $('#audioSource');
     let videoSelect = $('#videoSource');
 
@@ -143,7 +144,8 @@ $(function(){
         // チャットを受信
         call.on('data', function(data){
             chatData = data;
-            chatLog('ID: ' + data.src + '> ' + data.data); // data.src = 送信者のpeerid, data.data = 送信されたメッセージ
+            chatLog('ID: ' + data.src + '> ' + data.data);
+            // data.src = 送信者のpeerid, data.data = 送信されたメッセージ
         });
     }
 
@@ -151,7 +153,11 @@ $(function(){
         const videoDom = $('<video autoplay>');
         videoDom.attr('id',stream.peerId);
         videoDom.get(0).srcObject = stream;
-        $('.videosContainer').append(videoDom);
+        const faceDom = $('<span>');
+        faceDom.attr('class',expressionKey);
+        faceDom.text(expressionText);
+        $('.videosContainer').append(videoDom)
+        $('.faceAnalysis').after(faceDom);
     }
 
     function removeVideo(peerId){

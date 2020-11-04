@@ -1,5 +1,10 @@
 const myStream = document.getElementById("faceAPIStream");
+
 let data = new Object();
+let expressionsValue = 0;
+let expressionText = "";
+let expressionKey = "yet";
+
 const faces = {
   neutral: "(·ω·)",
   happy: '(*^ω^*)"',
@@ -32,6 +37,7 @@ const init = async () => {
 
 const onPlay = async () => {
   const message = document.getElementById('message');
+  const expression = document.getElementById('expression');
 
   const detectInterval = setInterval(async () => {
     // (3)顔認識処理
@@ -58,12 +64,11 @@ const onPlay = async () => {
       expression.textContent = "判別できません。"
     } else {
       data = resultExpression.expressions;
-      let expressionsValue = 0;
-      let expressionText = "";
       for (let key in data) {
         if (data[key] > expressionsValue) {
           expressionsValue = data[key];
           expressionText = faces[key];
+          expressionKey = key;
         }
       }
       expression.textContent = expressionText
