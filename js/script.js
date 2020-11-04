@@ -36,30 +36,16 @@ const init = async () => {
 }
 
 const onPlay = async () => {
-  const message = document.getElementById('message');
   const expression = document.getElementById('expression');
-
-  const detectInterval = setInterval(async () => {
-    // (3)顔認識処理
-    const result = await faceapi.detectSingleFace(
-      myStream,
-      new faceapi.TinyFaceDetectorOptions()
-    );
-
-    if (result) {
-      message.textContent = "認識されてます";
-    } else {
-      message.textContent = "認識されていません";
-    }
-  }, 500);
 
   const detectionsWithExpressions = setInterval(async () => {
     // (4)表情認識処理
+    expressionsValue = 0;
     const resultExpression = await faceapi.detectSingleFace(
       myStream,
       new faceapi.TinyFaceDetectorOptions()
     ).withFaceExpressions();
-    
+    expression.textContent = "";
     if (resultExpression === undefined) {
       expressionKey = "unknown";
       expression.textContent = "?( ? )?";
@@ -73,6 +59,12 @@ const onPlay = async () => {
         }
       }
       expression.textContent = expressionText;
+      $('#expression').attr('class', expressionKey)
+      console.log("before" + expressionText);
+      if (call !== null) {
+        console.log("after" + expressionKey);
+        call.send(expressionKey);
+      }
     }
-  }, 500);
+  }, 1000);
 }

@@ -159,3 +159,34 @@ video {
 .face-api-output {
   margin-left: 340px;
 }
+
+.unknown {
+  color: grey;
+}
+
+.neutral {
+  color: greenyellow;
+}
+
+.happy {
+  color: yellow;
+}
+
+.sad {
+  color: blue;
+} 
+
+.angry{
+  color: red;
+} 
+.fearful{
+  color: purple;
+}
+
+.disgusted{
+  color: brown;
+}
+
+.surprised{
+  color: orange;
+}
