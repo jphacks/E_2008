@@ -1,5 +1,6 @@
 let localStream = null;
 let chatData = null;
+let call = null;
 
 $(function(){
 
@@ -49,7 +50,7 @@ $(function(){
         if (!roomName) {
             return;
         }
-        const call = peer.joinRoom(roomName, {mode: 'sfu', stream: localStream});
+        call = peer.joinRoom(roomName, {mode: 'sfu', stream: localStream});
         setupCallEventHandlers(call);
     });
 
@@ -145,10 +146,12 @@ $(function(){
         // 特定の文字列は、チャットでつかえない
         call.on('data', function(data){
             if (data.data in faces) {
+                chatData = data;
                 const faceDom = $('#'+data.src+"Face");
                 faceDom.attr('class', data.data);
                 faceDom.text(faces[data.data]);
             } else if (data.data === "unknown") {
+                chatData = data;
                 const faceDom = $('#'+data.src+"Face");
                 faceDom.attr('class', data.data);
                 faceDom.text("?( ? )?");
@@ -158,17 +161,6 @@ $(function(){
                 // data.src = 送信者のpeerid, data.data = 送信されたメッセージ
             }
         });
-
-        const observer = new MutationObserver(function(){
-            /** DOMの変化が起こった時の処理 */
-            console.log(expressionKey);
-            call.send(expressionKey);
-        });
-
-        const expression = document.getElementById("expression");
-        const config = { attributes: true, childList: true, characterData: true };
-
-        observer.observe(expression, config);
     }
 
     function addVideo(stream){
