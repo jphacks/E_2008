@@ -6,6 +6,7 @@ let expressionText = "";
 let expressionKey = "yet";
 
 const faces = {
+  unknown:"unknown",
   neutral: "(·ω·)",
   happy: '(*^ω^*)"',
   sad: "( ´•̥̥̥ω•̥̥̥` )",
@@ -48,7 +49,9 @@ const onPlay = async () => {
     expression.textContent = "";
     if (resultExpression === undefined) {
       expressionKey = "unknown";
-      expression.textContent = "?( ? )?";
+      //expression.textContent = "?( ? )?";
+      expression.textContent = "unknown";//
+      if(call !== null){call.send(expressionKey);}//
     } else {
       data = resultExpression.expressions;
       for (let key in data) {

@@ -3,16 +3,24 @@
 <head lang="ja">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title>SkyWay Handson</title>
+    <link rel="stylesheet" href="claps_module/style.css">//for claps
     <link rel="stylesheet" href="./shared/style.css">
     <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
     <script type="text/javascript" src="https://cdn.webrtc.ecl.ntt.com/skyway-latest.js"></script>
     <script type="text/javascript" src="https://underscorejs.org/underscore-min.js"></script>
     <script type="text/javascript" src="./shared/key.js"></script>
     <script type="text/javascript" src="script.js"></script>
+
 </head>
 <body onload="init()">
     <div class="videosContainer">
-        <video id="myStream" autoplay muted="true"></video>
+        <video id="myStream" autoplay muted="true">
+            <!-- <source src="claps_module/clap.mp3"> -->
+        </video>
+        <audio id="audio_claps">
+            <source src="claps_module/clap.mp3" type="audio/mp3">
+        </audio>
+
     </div>
 
     <div class="myControllerContainer">
@@ -40,6 +48,20 @@
             <hr>
             <div id="chatLog"></div>
         </div>
+
+<!-- //speechRecognize -->
+    <div style="border:1px solid #000;">
+        <div id="result_text"></div>
+        <input type="submit" id="start_recognition" value="音声入力を開始！" style="color:#000; background-color:#ff9b00cf;">
+      </div>
+      <br>
+      <div id="status">
+      status: stop
+    </div>
+    <script type="text/javascript" src="speechRecognize/speechRec.js"></script>  
+    <script type="text/javascript" src="speechRecognize/SPcommand.js"></script>  
+<!-- //speechRecognize -->
+
     </div>
 
     <div class="face-api-container">
@@ -47,10 +69,18 @@
         <div class="face-api-output">
             <p>表情：<span id="expression">感情分析中</span></p>
             <h3 class="faceAnalysis">参加者の表情</h3>
+            <h3 class="faceCountList">表情リスト<br><span id="face_List_id"></span></h3>
         </div>
         
     </div>
+
+    <script src="claps_module/howler.min.js"></script>//for claps
+    <script type="text/javascript" src="claps_module/claps.js"></script>//for claps
     <script type="text/javascript" src="./js/face-api.min.js"></script>
     <script type="text/javascript" src="./js/script.js"></script>
+    <script type="text/javascript" src="face_counter.js"></script>
+
+
+
 </body>
 </html>
