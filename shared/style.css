@@ -3,7 +3,8 @@ html {
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
-  background-size: cover;  }
+  background-size: cover; 
+}
 
 dt {
   display: inline-block;
@@ -23,6 +24,18 @@ dd {
   height: 50%;
   left: 0;
   top: 0;
+}
+
+#myStream {
+  height: 100%;
+}
+
+.othersVideoContainer {
+  height: 100%;
+}
+
+.othersVideoContainer > video {
+  height: 100%;
 }
 
 .myControllerContainer {

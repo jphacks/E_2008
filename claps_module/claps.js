@@ -80,7 +80,6 @@ const rec = new Recording(function(data){
     if (call !== null) {
       call.send("clap");
     }
-    //残りタスク...別ユーザー上のaudio_clapsで再生(通信部分ができてない)
     //setTimeout(delete_clap(),3000);
     //document.bgColor = 'rgb('+Math.random()*255+','+Math.random()*255+','+Math.random()*255+')';
   }

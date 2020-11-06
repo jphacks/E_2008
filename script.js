@@ -1,4 +1,4 @@
-let list_face　=　{};
+let list_face = {};
 let localStream = null;
 let chatData = null;
 let call = null;
@@ -179,12 +179,13 @@ $(function(){
     function removeVideo(peerId){
         $('#'+peerId).remove();
         $('#'+peerId+'Face').remove();
+        delete list_face[peerId];
     }
 
     function removeAllRemoteVideos(){
         $('.othersVideoContainer').empty();
         $('.facesContainer').empty();
-
+        list_face = {};
     }
 
     function setupMakeCallUI(){
