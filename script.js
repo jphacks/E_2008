@@ -152,13 +152,6 @@ $(function(){
                 faceDom.attr('class', data.data);
                 faceDom.text(faces[data.data]);
                 list_face[data.src]=faces[data.data];
-            } else if (data.data === "unknown") {
-                chatData = data;
-                const faceDom = $('#'+data.src+"Face");
-                faceDom.attr('class', data.data);
-                //faceDom.text("?( ? )?");
-                faceDom.text("unknown");
-                list_face[data.src]=data.data;
             } else {
                 chatData = data;
                 chatLog('ID: ' + data.src + '> ' + data.data);

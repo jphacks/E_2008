@@ -1,6 +1,6 @@
 var list_face;
 var faces_counter=[
-    {name:"unknown",count:0},
+    {name:"( ? )",count:0},
     {name:"(·ω·)",count:0},
     {name:'(*^ω^*)"',count:0},
     {name:"( ´•̥̥̥ω•̥̥̥` )",count:0},
@@ -13,7 +13,7 @@ var faces_counter=[
 
 function facesCountFun(){
     var faces_counter=[//初期化
-        {name:"unknown",count:0},
+        {name:"( ? )",count:0},
         {name:"(·ω·)",count:0},
         {name:'(*^ω^*)"',count:0},
         {name:"( ´•̥̥̥ω•̥̥̥` )",count:0},
