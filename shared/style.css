@@ -3,7 +3,20 @@ html {
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
-  background-size: cover;  }
+  background-size: cover; 
+}
+
+dt {
+  display: inline-block;
+  width: 150px;
+  text-align: center;
+}
+
+dd {
+  display: inline-block;
+  width: fit-content;
+  margin: 0;
+}
 
 .videosContainer {
   position: absolute;
@@ -11,6 +24,18 @@ html {
   height: 50%;
   left: 0;
   top: 0;
+}
+
+#myStream {
+  height: 100%;
+}
+
+.othersVideoContainer {
+  height: 100%;
+}
+
+.othersVideoContainer > video {
+  height: 100%;
 }
 
 .myControllerContainer {
@@ -110,50 +135,6 @@ button:hover {
 video {
   background: black;
   float: left;
-}
-
-.videosContainer video {
-  height: 100%;
-}
-
-.videosContainer video:first-child:nth-last-child(1),
-.videosContainer video:first-child:nth-last-child(1) ~ video {
-  width: 100%;
-}
-
-.videosContainer video:first-child:nth-last-child(2),
-.videosContainer video:first-child:nth-last-child(2) ~ video {
-  width: 50%;
-}
-
-.videosContainer video:first-child:nth-last-child(3),
-.videosContainer video:first-child:nth-last-child(3) ~ video {
-  width: 33.33333%;
-}
-
-.videosContainer video:first-child:nth-last-child(4),
-.videosContainer video:first-child:nth-last-child(4) ~ video {
-  width: 25%;
-}
-
-.videosContainer video:first-child:nth-last-child(5),
-.videosContainer video:first-child:nth-last-child(5) ~ video {
-  width: 20%;
-}
-
-.videosContainer video:first-child:nth-last-child(6),
-.videosContainer video:first-child:nth-last-child(6) ~ video {
-  width: 16.66667%;
-}
-
-.videosContainer video:first-child:nth-last-child(7),
-.videosContainer video:first-child:nth-last-child(7) ~ video {
-  width: 14.28571%;
-}
-
-.videosContainer video:first-child:nth-last-child(8),
-.videosContainer video:first-child:nth-last-child(8) ~ video {
-  width: 12.5%;
 }
 
 .face-api-output {

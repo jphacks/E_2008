@@ -11,9 +11,7 @@ function SPcommands(){
     if(RecText=="分からない"){
         console.log("分からないcommand");
         // $('#expression').attr('class', expressionKey)
-        // console.log("before" + expressionText);
         // if (call !== null) {
-        //   console.log("after" + expressionKey);
         //   call.send(expressionKey);
         // }
 

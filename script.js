@@ -1,4 +1,4 @@
-var list_face={};
+let list_face = {};
 let localStream = null;
 let chatData = null;
 let call = null;
@@ -141,6 +141,7 @@ $(function(){
             var msg = $('#msg').val();
             call.send(msg);
             chatLog('自分> ' + msg);
+            console.log('自分> ' + msg);
         });
 
         // チャットを受信
@@ -151,14 +152,9 @@ $(function(){
                 const faceDom = $('#'+data.src+"Face");
                 faceDom.attr('class', data.data);
                 faceDom.text(faces[data.data]);
-                list_face[data.src]=faces[data.data];
-            } else if (data.data === "unknown") {
-                chatData = data;
-                const faceDom = $('#'+data.src+"Face");
-                faceDom.attr('class', data.data);
-                //faceDom.text("?( ? )?");
-                faceDom.text("unknown");
-                list_face[data.src]=data.data;
+                list_face[data.src] = data.data;
+            } else if (data.data = "clap") {
+                audio_claps.play();
             } else {
                 chatData = data;
                 chatLog('ID: ' + data.src + '> ' + data.data);
@@ -171,21 +167,25 @@ $(function(){
         const videoDom = $('<video autoplay>');
         videoDom.attr('id',stream.peerId);
         videoDom.get(0).srcObject = stream;
-        $('.videosContainer').append(videoDom);
+        $('.othersVideoContainer').append(videoDom);
         // とりあえず、入室時の自分の表情を初期値として代入
         const faceDom = $('<span>');
         faceDom.attr('id',stream.peerId+"Face");
         faceDom.attr('class',expressionKey);
-        faceDom.text(expressionText);
-        $('.faceAnalysis').after(faceDom);
+        faceDom.text(faces[expressionKey]);
+        $('.facesContainer').append(faceDom);
     }
 
     function removeVideo(peerId){
         $('#'+peerId).remove();
+        $('#'+peerId+'Face').remove();
+        delete list_face[peerId];
     }
 
     function removeAllRemoteVideos(){
-        $('.videosContainer').empty();
+        $('.othersVideoContainer').empty();
+        $('.facesContainer').empty();
+        list_face = {};
     }
 
     function setupMakeCallUI(){
