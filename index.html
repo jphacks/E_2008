@@ -20,7 +20,7 @@
         <audio id="audio_claps">
             <source src="claps_module/clap.mp3" type="audio/mp3">
         </audio>
-
+        <div class="othersVideoContainer"></div>
     </div>
 
     <div class="myControllerContainer">
@@ -68,7 +68,8 @@
         <video id="faceAPIStream" autoplay muted="true" onloadedmetadata="onPlay()"></video>
         <div class="face-api-output">
             <p>表情：<span id="expression">感情分析中</span></p>
-            <h3 class="faceAnalysis">参加者の表情</h3>
+            <h3>参加者の表情</h3>
+            <div class="facesContainer"></div>
             <h3 class="faceCountList">表情リスト<br><span id="face_List_id"></span></h3>
         </div>
         

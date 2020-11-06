@@ -141,6 +141,7 @@ $(function(){
             var msg = $('#msg').val();
             call.send(msg);
             chatLog('自分> ' + msg);
+            console.log('自分> ' + msg);
         });
 
         // チャットを受信
@@ -164,21 +165,24 @@ $(function(){
         const videoDom = $('<video autoplay>');
         videoDom.attr('id',stream.peerId);
         videoDom.get(0).srcObject = stream;
-        $('.videosContainer').append(videoDom);
+        $('.othersVideoContainer').append(videoDom);
         // とりあえず、入室時の自分の表情を初期値として代入
         const faceDom = $('<span>');
         faceDom.attr('id',stream.peerId+"Face");
         faceDom.attr('class',expressionKey);
-        faceDom.text(expressionText);
-        $('.faceAnalysis').after(faceDom);
+        faceDom.text(faces[expressionKey]);
+        $('.facesContainer').append(faceDom);
     }
 
     function removeVideo(peerId){
         $('#'+peerId).remove();
+        $('#'+peerId+'Face').remove();
     }
 
     function removeAllRemoteVideos(){
-        $('.videosContainer').empty();
+        $('.othersVideoContainer').empty();
+        $('.facesContainer').empty();
+
     }
 
     function setupMakeCallUI(){

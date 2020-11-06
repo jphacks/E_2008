@@ -2,7 +2,6 @@ const myStream = document.getElementById("faceAPIStream");
 
 let data = new Object();
 let expressionsValue = 0;
-let expressionText = "";
 let expressionKey = "yet";
 
 const faces = {
@@ -62,7 +61,6 @@ const onPlay = async () => {
     expression.textContent = faces[expressionKey];
     $('#expression').attr('class', expressionKey);
     if (call !== null) {
-      console.log("after" + expressionKey);
       call.send(expressionKey);
     }
   }, 1000);
