@@ -27,7 +27,7 @@ document.getElementById("start_recognition").onclick = function vr_function() {
         document.getElementById('interim_result').innerHTML = result_line;
         //console.log(results[i][0].transcript);//最終的な結果を表示
         RecText=results[i][0].transcript;
-        SPcommands();
+        speechFunc();
         document.getElementById('status').innerHTML = "status: stop";
         recognition.stop();
         return;
