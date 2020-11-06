@@ -163,7 +163,7 @@ $(function(){
                 }
                 else{//音声認識からデータが来た場合，内容をリスト化
                     list_speech[data.src]=data.data.substring(data.data.length,3);
-                    console.log(data.data.substring(data.data.length,3));
+                    //console.log(data.data.substring(data.data.length,3));
                 }
             }
         });
