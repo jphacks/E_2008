@@ -1,4 +1,4 @@
-let list_face={};
+let list_face　=　{};
 let localStream = null;
 let chatData = null;
 let call = null;
@@ -153,6 +153,8 @@ $(function(){
                 faceDom.attr('class', data.data);
                 faceDom.text(faces[data.data]);
                 list_face[data.src] = data.data;
+            } else if (data.data = "clap") {
+                audio_claps.play();
             } else {
                 chatData = data;
                 chatLog('ID: ' + data.src + '> ' + data.data);
