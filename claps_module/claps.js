@@ -1,5 +1,4 @@
 const audio_claps = document.querySelector("#audio_claps");
-var list_face;
 
 
 var Recording = function(cb){

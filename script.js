@@ -1,4 +1,4 @@
-var list_face={};
+let list_face={};
 let localStream = null;
 let chatData = null;
 let call = null;
@@ -152,7 +152,7 @@ $(function(){
                 const faceDom = $('#'+data.src+"Face");
                 faceDom.attr('class', data.data);
                 faceDom.text(faces[data.data]);
-                list_face[data.src]=faces[data.data];
+                list_face[data.src] = data.data;
             } else {
                 chatData = data;
                 chatLog('ID: ' + data.src + '> ' + data.data);

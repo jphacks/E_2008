@@ -1,63 +1,46 @@
-var list_face;
-var faces_counter=[
-    {name:"( ? )",count:0},
-    {name:"(·ω·)",count:0},
-    {name:'(*^ω^*)"',count:0},
-    {name:"( ´•̥̥̥ω•̥̥̥` )",count:0},
-    {name:"(*｀へ´*)",count:0},
-    {name:"◝(⁰▿⁰三⁰▿⁰ ‧̣̥̇)◜",count:0},
-    {name:"_( _︶⌓︶ )_",count:0},
-    {name:"(((゜Д゜；)))",count:0},
-]
+function facesCountFun() {
+    // 初期化
+    let faces_counter=[
+        {name: "unknown", count:0},
+        {name: "neutral", count:0},
+        {name: "happy", count:0},
+        {name: "sad", count:0},
+        {name: "angry", count:0},
+        {name: "fearful", count:0},
+        {name: "disgusted", count:0},
+        {name: "surprised", count:0},
+    ];
 
-
-function facesCountFun(){
-    var faces_counter=[//初期化
-        {name:"( ? )",count:0},
-        {name:"(·ω·)",count:0},
-        {name:'(*^ω^*)"',count:0},
-        {name:"( ´•̥̥̥ω•̥̥̥` )",count:0},
-        {name:"(*｀へ´*)",count:0},
-        {name:"◝(⁰▿⁰三⁰▿⁰ ‧̣̥̇)◜",count:0},
-        {name:"_( _︶⌓︶ )_",count:0},
-        {name:"(((゜Д゜；)))",count:0},
-    ]
-
-
-    for(i in list_face){//list_faceから他の人の表情リストを取得
-        for(j in faces_counter){//faces_counterでカウント
+    // list_faceから他の人の表情リストを取得
+    // faces_counterでカウント
+    for(i in list_face){
+        for(j in faces_counter){
             if(list_face[i]==faces_counter[j].name){
                 faces_counter[j].count++;
             }
         }
     }
-
-    faces_counter.sort(function(a,b){//カウントしたfaces_counterを降順ソート
-        if(a.count>b.count) return -1;
+    // カウントしたfaces_counterを降順ソート
+    faces_counter.sort(function(a,b){
+        if(a.count > b.count) return -1;
         if(a.count < b.count) return 1;
         return 0;
     });
-    const face_List_id = document.getElementById('face_List_id');
-    face_List_id.textContent = "";
-    var textContent_sum="";
-    for(i in faces_counter){//faces_counterを出力
-        if(faces_counter[i].count==0){continue;}
-        else {
-            textContent_sum=textContent_sum+faces_counter[i].name+" "+faces_counter[i].count+"\n";
+
+    $('.faceCountList').empty();
+
+    // faces_counterを出力
+    for(i in faces_counter){
+        if(faces_counter[i].count !== 0) {
+            const listHeadDom = $('<dt>');
+            listHeadDom.attr('class', faces_counter[i].name);
+            listHeadDom.text(faces[faces_counter[i].name])
+            const listBodyDom = $('<dd>');
+            listBodyDom.text(faces_counter[i].count);
+            $('.faceCountList').append(listHeadDom);
+            $('.faceCountList').append(listBodyDom);
         }
     }
-
-    face_List_id.textContent=textContent_sum;
-
-
 }
 
-function list_face_clear(){
-    list_face={};
-    console.log("list_face_clear");
-    //もし余裕があれば，誰かが退出したらclearがベスト
-
-}
-
-    setInterval(facesCountFun,1000);//1秒ごとにfacesCountで他ユーザーの顔をリスト化
-    setInterval(list_face_clear,10000);//10秒ごとにlist_faceを初期化
+setInterval(facesCountFun,1000);//1秒ごとにfacesCountで他ユーザーの顔をリスト化
