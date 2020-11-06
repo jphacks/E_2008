@@ -73,7 +73,7 @@ $(function(){
         };
         constraints.video.height = {
             min: 240,
-            max: 480        
+            max: 480
         };
 
         navigator.mediaDevices.getUserMedia(constraints)
@@ -141,7 +141,6 @@ $(function(){
             var msg = $('#msg').val();
             call.send(msg);
             chatLog('自分> ' + msg);
-            console.log('自分> ' + msg);
         });
 
         // チャットを受信
@@ -153,7 +152,7 @@ $(function(){
                 faceDom.attr('class', data.data);
                 faceDom.text(faces[data.data]);
                 list_face[data.src] = data.data;
-            } else if (data.data = "clap") {
+            } else if (data.data == "clap") {
                 audio_claps.play();
             } else {
                 chatData = data;
@@ -185,6 +184,7 @@ $(function(){
     function removeAllRemoteVideos(){
         $('.othersVideoContainer').empty();
         $('.facesContainer').empty();
+        $('#join-room').val('');
         list_face = {};
     }
 
