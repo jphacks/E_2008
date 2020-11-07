@@ -1,4 +1,5 @@
 let list_face = {};
+let list_speech={};
 let localStream = null;
 let chatData = null;
 let call = null;
@@ -156,8 +157,14 @@ $(function(){
                 audio_claps.play();
             } else {
                 chatData = data;
-                chatLog('ID: ' + data.src + '> ' + data.data);
-                // data.src = 送信者のpeerid, data.data = 送信されたメッセージ
+                if(data.data.indexOf('SP#')==-1){
+                    chatLog('ID: ' + data.src + '> ' + data.data);
+                    // data.src = 送信者のpeerid, data.data = 送信されたメッセージ
+                }
+                else{//音声認識からデータが来た場合，内容をリスト化
+                    list_speech[data.src]=data.data.substring(data.data.length,3);
+                    //console.log(data.data.substring(data.data.length,3));
+                }
             }
         });
     }
@@ -172,13 +179,14 @@ $(function(){
         faceDom.attr('id',stream.peerId+"Face");
         faceDom.attr('class',expressionKey);
         faceDom.text(faces[expressionKey]);
-        $('.facesContainer').append(faceDom);
+        //$('.facesContainer').append(faceDom);
     }
 
     function removeVideo(peerId){
         $('#'+peerId).remove();
         $('#'+peerId+'Face').remove();
         delete list_face[peerId];
+        delete list_speech[peerId];
     }
 
     function removeAllRemoteVideos(){
@@ -186,6 +194,7 @@ $(function(){
         $('.facesContainer').empty();
         $('#join-room').val('');
         list_face = {};
+        list_speech={};
     }
 
     function setupMakeCallUI(){
