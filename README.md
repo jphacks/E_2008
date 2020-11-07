@@ -1,6 +1,11 @@
 # Virtual zoom
 
-[![Product Name](image.jpg)](https://youtu.be/eHj06bmW-8A)
+[![Product Name](image.jpg)](https://youtu.be/bdUjfwVIE6g)
+
+
+製品デモURL
+https://jphacks.github.io/E_2008/
+現在、skywayのAPIキーが無効になっているため，通信できません．
 
 
 ## 製品概要
