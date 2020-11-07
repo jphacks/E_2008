@@ -73,7 +73,7 @@ let clap_flag=0;
 
 const rec = new Recording(function(data){
   if(detectClap(data)){
-    console.log('clap!');
+    //console.log('clap!');
     clap_flag=1;
     create_clap();
     audio_claps.play();
@@ -101,5 +101,7 @@ function delete_clap(){
 function create_clap(){
   $("ul #box1").css("display", "block");
   clearTimeout();
-  setTimeout(function(){console.log("endend");timer_claps++;},1000);
+  setTimeout(function(){
+    //console.log("endend");
+    timer_claps++;},1000);
 };
