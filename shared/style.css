@@ -1,9 +1,35 @@
 html {
   background: #000 no-repeat center center fixed;
+  color: #fff;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover; 
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Hiragino Kaku Gothic Pro", "ヒラギノ角ゴ Pro W3", メイリオ, Meiryo, "ＭＳ Ｐゴシック", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+header {
+  width: 100%;
+  padding: 20px 2% 10px 4%;
+  top: 0;
+  display: flex;
+  align-items: center;
+}
+
+form {
+  margin-top: 1em;
+  margin-bottom: 1em;
 }
 
 dt {
@@ -18,12 +44,162 @@ dd {
   margin: 0;
 }
 
+/* Header */
+.logo {
+  height: 48px;
+}
+
+/* room form */
+.roomController {
+  padding-left: 16px;
+  display: inline-block;
+}
+
+/* 入力フォーム */
+#make-call, #end-call {
+  width: 430px;
+}
+
+.cp_iptxt, .room-label {
+  position: relative;
+  display: inline-block;
+	width: 300px;
+	margin: 0;
+}
+
+.room-label {
+  width: 270px;
+}
+.cp_iptxt input[type='text'] {
+	font: 15px sans-serif;
+	box-sizing: border-box;
+	width: 100%;
+	letter-spacing: 1px;
+	padding-left: 4em;
+}
+.cp_iptxt input[type='text']:focus {
+	outline: none;
+}
+.ef {
+	padding: 4px 0;
+	border: 0;
+	border-bottom: 1px solid #fff;
+  background-color: transparent;
+  color: #fff;
+}
+.ef ~ .focus_line {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	width: 0;
+	height: 2px;
+	transition: 0.4s;
+	background: -webkit-linear-gradient(0deg,#FC466B, #3F5EFB);
+}
+.ef:focus ~ .focus_line,
+.cp_iptxt.ef ~ .focus_line {
+	width: 100%;
+	transition: 0.4s;
+}
+.ef ~ label {
+	position: absolute;
+	z-index: -1;
+	top: 4px;
+	left: 0;
+	width: 100%;
+	transition: 0.3s;
+	letter-spacing: 0.5px;
+	color: #FFF;
+}
+.ef:focus ~ label, .cp_iptxt.ef ~ label {
+	font-size: 12px;
+	top: -16px;
+	transition: 0.3s;
+	color: #FC466B;
+  background: -webkit-linear-gradient(0deg,#FC466B, #3F5EFB);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+#room-id {
+  font-size: 1.6rem;
+  color: #FC466B;
+  background: -webkit-linear-gradient(0deg,#FC466B, #3F5EFB);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* ボタン */
+.btn {
+  font-size: 1.2rem;
+  font-weight: 500;
+  line-height: 1.2;
+  position: relative;
+  display: inline-block;
+  padding: 0.5rem 2rem;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+  text-align: center;
+  vertical-align: middle;
+  text-decoration: none;
+  letter-spacing: 0.1em;
+  color: #000;
+  border-radius: 0.5rem;
+}
+.btn-border-gradient-wrap {
+  display: inline-block;
+  padding: 0.2rem;
+  border-radius: 0.5rem;
+  background: -webkit-gradient(
+    linear,
+    left top,
+    right top,
+    from(#FC466B),
+    to(#3F5EFB)
+  );
+  background: -webkit-linear-gradient(left, #FC466B, #3F5EFB);
+  background: linear-gradient(to right, #FC466B, #3F5EFB);
+}
+
+.btn-border-gradient-wrap:hover {
+  background: -webkit-gradient(
+    linear,
+    right top,
+    left top,
+    from(#FC466B),
+    to(#3F5EFB)
+  );
+  background: -webkit-linear-gradient(right, #FC466B,#3F5EFB);
+  background: linear-gradient(to left, #FC466B,#3F5EFB);
+}
+
+.btn-border-gradient {
+  color: #fff;
+  background: #000;
+}
+
+.mute-controller {
+  padding-left: 16px;
+}
+
+.inputController {
+  padding-left: 16px;
+}
+
+#my-id {
+  font-weight: bold;
+}
+
+/* VIDEO */
 .videosContainer {
-  position: absolute;
-  width: 100%;
-  height: 50%;
-  left: 0;
-  top: 0;
+  display: inline-block;
+  width: 78%;
+  height: 40%;
 }
 
 #myStream {
@@ -38,44 +214,47 @@ dd {
   height: 100%;
 }
 
+
 .myControllerContainer {
-  position: absolute;
-  width: 40%;
+  display: inline-block;
+  width: 20%;
   height: 50%;
-  top: 50%;
-  padding-left: 20px;
-  color: white
+}
+
+#chat-box {
+  height: 50%;
+}
+#chatLog {
+  display: block;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  height: 300px;
+}
+.chatForm {
+  align-items: center;
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+
+.speechForm {
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+
+#msg {
+  border:0;
+  font-size:1.3em;
+  color:#aaa;
+  border:solid 1px #ccc;
+  border-radius: 10px;
+  box-shadow: inset 1px 4px 9px -6px rgba(0,0,0,0.5);
 }
 
 .face-api-container {
-  position: absolute;
   width: 40%;
   height: 50%;
-  top: 50%;
-  left: 50%;
-  padding-left: 20px;
   color: white
 }
-
-#my-id {
-  font-weight: bold;
-}
-
-.select {
-  margin-top: 1em;
-  margin-bottom: 1em;
-}
-
-form {
-  margin-top: 1em;
-  margin-bottom: 1em;
-}
-
-div #recording, div #end-call {
-  margin-top: 1em;
-  margin-bottom: 1em;
-}
-
 #end-call {
   display: none;
 }
@@ -84,57 +263,10 @@ div #recording, div #end-call {
   display: none;
 }
 
-#recording {
-  display: none;
-}
-
-#downloadlink {
-  display: none;
-}
-
-input[type=text]{
-  border-radius: 5px;
-  border:#a9a9a9 1px solid;
-  box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2),0 0 2px rgba(0,0,0,0.3);
-  width: 40%;
-  font-size: 15px;
-  padding: 5px;
-}
-
-input[type=text]:focus {
-  border:solid 1px #20b2aa;
-}
-
-input[type=text], select {
-  outline: none;
-}
-
-.room-label {
-  width: 40%;
-  padding: 5px;
-  display: inline-block;
-}
-
-button {
-  font-size: 15px;
-  font-weight: bold;
-  padding: 6px 20px;
-  color: #fff;
-  border-style: none;
-  text-shadow: 1px 1px 2px #000;
-  background: -webkit-gradient(linear, left bottom, left top, from(#36d), color-stop(0.5, #248), to(#36d));
-  border-radius: 5px;
-  width: 120px;
-}
-
-button:hover {
-  /* 透明度を20%に指定 */
-  opacity: 0.8;
-}
-
 video {
   background: black;
   float: left;
+  height: 100%;
 }
 
 .face-api-output {

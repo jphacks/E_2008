@@ -4,16 +4,51 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Virtual Zoom</title>
-    <link rel="stylesheet" href="./shared/style.css">
-    <link rel="stylesheet" href="claps_module/style.css">
     <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
     <script type="text/javascript" src="https://cdn.webrtc.ecl.ntt.com/skyway-latest.js"></script>
     <script type="text/javascript" src="https://underscorejs.org/underscore-min.js"></script>
     <script type="text/javascript" src="./shared/key.js"></script>
     <script type="text/javascript" src="script.js"></script>
-
+    <link rel="stylesheet" href="./shared/style.css">
+    <link rel="stylesheet" href="claps_module/style.css">
 </head>
 <body onload="init()">
+    <header>
+        <img src="logo.png" class="logo"/>
+        <div class="roomController">
+            <form id="make-call">
+                <div class="cp_iptxt">
+                    <input type="text" placeholder="" id="join-room" class="ef">
+                    <label>Join room...</label>
+                    <span class="focus_line"></span>
+                </div>
+                <div class="btn-border-gradient-wrap">
+                    <button type="submit" class="btn btn-border-gradient">Join!</button>
+                </div>
+            </form>
+            <form id="end-call">
+                <label class="room-label">Room: <strong id="room-id">...</strong></label>
+                <div class="btn-border-gradient-wrap">
+                    <button type="submit" class="btn btn-border-gradient">Leave</button>
+                </div>
+            </form>
+            <span>通話においてのON/OFF</span>
+            <label><input type="checkbox" id="audioTrack" checked> マイク</label>
+            <label><input type="checkbox" id="videoTrack" checked> ビデオ</label>
+        </div>
+        <div class="mute-controller">
+            
+        </div>
+        <div class="inputController">
+            <p>Your id: <span id="my-id">...</span></p>
+            <div class="select">
+                <label for="audioSource">Audio input source: </label><select id="audioSource"></select>
+            </div>
+            <div class="select">
+                <label for="videoSource">Video source: </label><select id="videoSource"></select>
+            </div>
+        </div>
+    </header>
     <div class="videosContainer">
         <video id="myStream" autoplay muted="true">
             <!-- <source src="claps_module/clap.mp3"> -->
@@ -25,37 +60,23 @@
     </div>
 
     <div class="myControllerContainer">
-        <p>Your id: <span id="my-id">...</span></p>
-        <div class="select">
-            <label for="audioSource">Audio input source: </label><select id="audioSource"></select>
-        </div>
-        <div class="select">
-            <label for="videoSource">Video source: </label><select id="videoSource"></select>
-        </div>
-        <div class="mute-controller">
-            <label><input type="checkbox" id="audioTrack" checked>マイク ON/OFF</label>
-            <label><input type="checkbox" id="videoTrack" checked>ビデオ ON/OFF</label>
-        </div>
-        <form id="make-call">
-            <input type="text" placeholder="Join room..." id="join-room">
-            <button type="submit">入室</button>
-        </form>
-        <form id="end-call">
-            <label class="room-label">Currently in room: <span id="room-id">...</span></label>
-            <button type="submit">退室</button>
-        </form>
         <div id="chat-box">
-            <input type="text" id="msg" placeholder="チャットを入力"> <button id="send">送信</button>
-            <hr>
             <div id="chatLog"></div>
+            <div class="chatForm">
+                <input type="text" id="msg" placeholder="　チャットを入力">
+                <div class="btn-border-gradient-wrap">
+                    <button type="submit" class="btn btn-border-gradient" id="send">Send</button>
+                </div>
+            </div>
         </div>
 
         <!-- //speechRecognize -->
-        <div>
+        <div class="speechForm">
             <div id="result_text"></div>
-            <input type="submit" id="start_recognition" value="音声入力を開始！" style="color:#000; background-color:#ff9b00cf;">
+            <div class="btn-border-gradient-wrap">
+                <input type="submit" id="start_recognition" value="音声入力を開始！" class="btn btn-border-gradient">
+            </div>
         </div>
-        <br>
         <div id="status">status: stop</div>
         <script type="text/javascript" src="speechRecognize/speechRec.js"></script>  
         <script type="text/javascript" src="speechRecognize/SPcommand.js"></script>  
