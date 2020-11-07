@@ -179,7 +179,7 @@ $(function(){
         faceDom.attr('id',stream.peerId+"Face");
         faceDom.attr('class',expressionKey);
         faceDom.text(faces[expressionKey]);
-        $('.facesContainer').append(faceDom);
+        //$('.facesContainer').append(faceDom);
     }
 
     function removeVideo(peerId){
