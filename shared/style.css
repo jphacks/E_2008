@@ -217,6 +217,7 @@ dd {
 
 .myControllerContainer {
   display: inline-block;
+  vertical-align: top;
   width: 20%;
   height: 50%;
 }
@@ -228,7 +229,7 @@ dd {
   display: block;
   overflow-x: hidden;
   overflow-y: scroll;
-  height: 300px;
+  height: 200px;
 }
 .chatForm {
   align-items: center;
@@ -251,9 +252,13 @@ dd {
 }
 
 .face-api-container {
-  width: 40%;
-  height: 50%;
-  color: white
+  z-index: 100;
+  position: absolute;
+  top: 135px;
+  left: 0;
+  width: 640px;
+  height: 480px;
+  background-color: #000;
 }
 #end-call {
   display: none;
@@ -266,7 +271,6 @@ dd {
 video {
   background: black;
   float: left;
-  height: 100%;
 }
 
 .face-api-output {
