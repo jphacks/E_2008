@@ -155,7 +155,9 @@ $(function(){
                 list_face[data.src] = data.data;
             } else if (data.data == "clap") {
                 audio_claps.play();
-            } else {
+            } else if (data.data =="all#listen#"){
+                vr_function();
+            }else {
                 chatData = data;
                 if(data.data.indexOf('SP#')==-1){
                     chatLog('ID: ' + data.src + '> ' + data.data);

@@ -1,8 +1,13 @@
 var RecText=null;
+call=null;
 
 //参考：https://www.geekfeed.co.jp/geekblog/webspeech
 var speech_count = 0;
-document.getElementById("start_recognition").onclick = function vr_function() {
+document.getElementById("start_recognition").onclick = function speakme(){
+  vr_function();
+}
+
+function vr_function() {
   var result_text = document.getElementById('result_text');
   while (result_text.firstChild) {
     result_text.removeChild(result_text.firstChild);
@@ -39,4 +44,9 @@ document.getElementById("start_recognition").onclick = function vr_function() {
   }
   document.getElementById('status').innerHTML = "status: recording...";
   recognition.start();
+}
+
+
+document.getElementById("start_recognition_all").onclick = function all_vr_function(){
+  call.send("all#listen#");
 }
