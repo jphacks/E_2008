@@ -12,8 +12,6 @@ function speechFunc(){
     }
 }
 
-
-
 function speechCountFun() {
     // 初期化
     let speech_counter=[
