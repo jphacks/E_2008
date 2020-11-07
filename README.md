@@ -1,9 +1,6 @@
 # Virtual zoom
 
-[![IMAGE ALT TEXT HERE](https://jphacks.com/wp-content/uploads/2020/09/JPHACKS2020_ogp.jpg)](https://www.youtube.com/watch?v=G5rULR53uMk)
-
-## デモ動画
-[![Audi R8](https://youtu.be/eHj06bmW-8A/0.jpg)](https://youtu.be/eHj06bmW-8A "Audi R8")
+[![Product Name](image.jpg)](https://youtu.be/eHj06bmW-8A)
 
 
 ## 製品概要
