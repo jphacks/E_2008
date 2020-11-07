@@ -7,14 +7,12 @@ function SPcommands(){
         console.log("OK command");
     }
 
-
     if(RecText=="分からない"){
         console.log("分からないcommand");
         // $('#expression').attr('class', expressionKey)
         // if (call !== null) {
         //   call.send(expressionKey);
         // }
-
     }
 
 }
