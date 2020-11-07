@@ -3,7 +3,7 @@
 [![IMAGE ALT TEXT HERE](https://jphacks.com/wp-content/uploads/2020/09/JPHACKS2020_ogp.jpg)](https://www.youtube.com/watch?v=G5rULR53uMk)
 
 ## デモ動画
-[![Audi R8](http://img.youtube.com/vi/KOxbO0EI4MA/0.jpg)](https://www.youtube.com/watch?v=KOxbO0EI4MA "Audi R8")
+[![Audi R8](https://youtu.be/eHj06bmW-8A/0.jpg)](https://youtu.be/eHj06bmW-8A "Audi R8")
 
 
 ## 製品概要
