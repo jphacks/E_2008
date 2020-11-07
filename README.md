@@ -2,6 +2,10 @@
 
 [![IMAGE ALT TEXT HERE](https://jphacks.com/wp-content/uploads/2020/09/JPHACKS2020_ogp.jpg)](https://www.youtube.com/watch?v=G5rULR53uMk)
 
+## デモ動画
+https://youtu.be/eHj06bmW-8A
+
+
 ## 製品概要
 
 ### コミュニケーション X Tech
@@ -44,9 +48,9 @@ WEBカメラで、顔の画像を取得し、リアルタイムで、学習済�
 - 
 
 ### 注力したこと（こだわり等）
-* 
+* 他の人の感情を顔文字で表現
 * 拍手の音の認知
-* 
+
 
 ## 開発技術
 ### 活用した技術
